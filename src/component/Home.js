@@ -7,8 +7,7 @@ const Home  = () => {
     useEffect(() => {
         const fetchPosts = async () => {
             const option = {
-                method: 'POST',
-                body: JSON.stringify(user),
+                method: 'GET',
                 headers: {
                     'Content-Type': 'application/json'
                 }
