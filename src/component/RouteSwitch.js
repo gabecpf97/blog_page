@@ -14,10 +14,10 @@ const RouteSwitch = () => {
                 <NavBar />
                 <Routes>
                     <Route path="/" element={<Home />} />
-                    <Route path="/account" element={<Account />} />
+                    {/* <Route path="/account" element={<Account />} />
                     <Route path="/log_in" element={<LogIn />} />
                     <Route path="/post/:id" element={<Post />} />
-                    <Route path="/sign_up" element={<SignUp />} />
+                    <Route path="/sign_up" element={<SignUp />} /> */}
                 </Routes>
             </BrowserRouter>
         </div>

@@ -39,7 +39,7 @@ const SignUp = () => {
             }
         };
         // should get token
-        const user = await fetch(process.env.SIGNUP_URL, option);
+        // const user = await fetch(process.env.SIGNUP_URL, option);
         navigate('/');
     }
 
@@ -49,22 +49,22 @@ const SignUp = () => {
                 <div className="getUsername">
                     <label for="username">Username: </label>
                     <input type="text" placeholder="username"
-                        value={() => onUsernameChange(e)} />
+                        value={(e) => onUsernameChange(e)} />
                 </div>
                 <div className="getEmail">
                     <label for="email">Email: </label>
                     <input type="text" placeholder="email"
-                        value={() => onEmailChange(e)} />
+                        value={(e) => onEmailChange(e)} />
                 </div>
                 <div className="getPassword">
                     <label for="password">Password: </label>
                     <input type="password" placeholder="password"
-                        value={() => onPasswordChange(e)} />
+                        value={(e) => onPasswordChange(e)} />
                 </div>
                 <div className="getConfirmPassword">
                     <label for="confirm_password">Confirm password: </label>
                     <input type="text" placeholder="confirm password"
-                        value={() => onConfirmChange(e)} />
+                        value={(e) => onConfirmChange(e)} />
                 </div>
                 <input type="submit" value="Sign Up" />
             </form>
