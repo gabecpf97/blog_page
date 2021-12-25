@@ -1,29 +1,37 @@
 import { DateTime } from "luxon";
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
+import async from "async";
 
 const Post = () => {
     const id = useParams().id;
     const [post_info, setPost_info] = useState();
+    const [comments, setComments] = useState();
     const [loaded, setLoaded] = useState(false);
 
     useEffect(() => {
-        const fetchData = async() => {
-            const response = await fetch(`http://localhost:5000/post/${id}`, {mode: 'cors'});
-            const post_detail = await response.json();
-            setPost_info(post_detail.thePost);
-            setLoaded(true);
-        };
-
-        fetchData().catch((err) => {
-            console.log(err);
-        })
+        const fetchData = async () => {
+            try {
+                const data = await Promise.all([
+                    fetch(`http://localhost:5000/post/${id}`).then(response => response.json()),
+                    fetch(`http://localhost:5000/post_comment/${id}`).then(response => response.json()),
+                ]);
+                setPost_info(data[0].thePost);
+                setComments(data[1].comment_list);
+                setLoaded(true);
+                
+            } catch (err) {
+                console.log(err);
+            }
+        }
+        fetchData();
     }, [id]);
 
     return (
         <div className="post_detail">
             {loaded &&
-                <div className="post">
+                <div className="post_div">
+                    <div className="post">
                         <h1>{post_info.title}</h1>
                         <Link to={`/user/${post_info.user._id}`}>
                             <h2>{post_info.user.username}</h2>
@@ -33,6 +41,18 @@ const Post = () => {
                             .toLocaleString(DateTime.DATETIME_FULL)}
                         </p>
                         <p>{post_info.message}</p>
+                    </div>
+                    <div className="comments">
+                        {comments.map(comment => {
+                            return (
+                                <div className="comment" key={comment._id}>
+                                    <h2>{comment.message}</h2>
+                                    <p>{comment.user.username}</p>
+                                    <p>{comment.date}</p>
+                                </div>
+                            )
+                        })}
+                    </div>
                 </div>
             }
         </div>

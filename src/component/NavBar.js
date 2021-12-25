@@ -10,9 +10,6 @@ const NavBar = ({status}) => {
             <ul className="pages">
                 {status && 
                     <div className="loged_in">
-                        <Link to="/Account">
-                            <li className="page">Account</li>
-                        </Link>
                         <Link to="/log_out">
                             <li className="page">Log Out</li>
                         </Link>
