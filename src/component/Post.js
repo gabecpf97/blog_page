@@ -50,17 +50,7 @@ const Post = () => {
                         <p>{post_info.message}</p>
                     </div>
                     <CommentPost handleSumbit={addComment}/>
-                    <div className="comments">
-                        {comments.map(comment => {
-                            return (
-                                <div className="comment" key={comment._id}>
-                                    <h2>{comment.message}</h2>
-                                    <p>{comment.user.username}</p>
-                                    <p>{comment.date}</p>
-                                </div>
-                            )
-                        })}
-                    </div>
+                    <Comment comments={comments} />
                 </div>
             }
         </div>
