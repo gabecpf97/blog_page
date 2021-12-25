@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import uniqid from 'uniqid';
 import { useNavigate } from "react-router-dom";
 
 
@@ -8,6 +9,8 @@ const SignUp = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [confirm_password, setConfirm_password] = useState('');
+    const [errors, setErrors] = useState();
+    const [loadedErr, setLoadedErr] = useState(false);
 
     const onUsernameChange = (e) => {
         setUsername(e.target.value);
@@ -25,49 +28,71 @@ const SignUp = () => {
         setConfirm_password(e.target.value);
     }
 
-    const onSubmitForm = async () => {
-        const option = {
-            method: "POST",
-            body: {
-                username,
-                email,
-                password,
-                confirm_password,
-            },
-            headers: {
-                'Content-Type': 'application/json'
+    const onSubmitForm = async (e) => {
+        e.preventDefault();
+        const sign_up_post = async () => {
+            const response = await fetch('http://localhost:5000/sign_up', {
+                method: 'post',
+                body: JSON.stringify({
+                    username,
+                    email,
+                    password,
+                    confirm_password
+                }),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+            const res_data = await response.json();
+            if (res_data.errors) {
+                setErrors(res_data.errors);
+                setLoadedErr(true);
+            } else {
+                const token = res_data.token;
+                localStorage.setItem('token', token);
+                setLoadedErr(false);
+                navigate('/');
             }
-        };
-        // should get token
-        // const user = await fetch(process.env.SIGNUP_URL, option);
-        navigate('/');
+        }
+        sign_up_post().catch((err) => {
+            console.log({err});
+        })
     }
 
     return (
         <div className="sign_up">
-            <form onSubmit={() => onSubmitForm()}>
+            <form onSubmit={(e) => onSubmitForm(e)}>
                 <div className="getUsername">
-                    <label for="username">Username: </label>
-                    <input type="text" placeholder="username"
-                        value={(e) => onUsernameChange(e)} />
+                    <label htmlFor="username">Username: </label>
+                    <input type="text" placeholder="username" value={username}
+                        onChange={(e) => onUsernameChange(e)} />
                 </div>
                 <div className="getEmail">
-                    <label for="email">Email: </label>
-                    <input type="text" placeholder="email"
-                        value={(e) => onEmailChange(e)} />
+                    <label htmlFor="email">Email: </label>
+                    <input type="text" placeholder="email" value={email}
+                        onChange={(e) => onEmailChange(e)} />
                 </div>
                 <div className="getPassword">
-                    <label for="password">Password: </label>
-                    <input type="password" placeholder="password"
-                        value={(e) => onPasswordChange(e)} />
+                    <label htmlFor="password">Password: </label>
+                    <input type="text" placeholder="password" value={password}
+                        onChange={(e) => onPasswordChange(e)} />
                 </div>
                 <div className="getConfirmPassword">
-                    <label for="confirm_password">Confirm password: </label>
-                    <input type="text" placeholder="confirm password"
-                        value={(e) => onConfirmChange(e)} />
+                    <label htmlFor="confirm_password">Confirm password: </label>
+                    <input type="text" placeholder="confirm password" value={confirm_password}
+                        onChange={(e) => onConfirmChange(e)} />
                 </div>
                 <input type="submit" value="Sign Up" />
             </form>
+            <ul className="errors">
+                {loadedErr && errors.map(error => {
+                    return (
+                        <li key={uniqid()}>
+                            <p>{error.msg}</p>
+                        </li>
+                    )
+                })}
+            </ul>
         </div>
     )
 }

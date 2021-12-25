@@ -27,8 +27,10 @@ const Home  = () => {
                                         .toLocaleString(DateTime.DATETIME_FULL);
                     return(
                         <div className="post" key={post._id}>
-                            <h1>{post.title}</h1>
-                            <p>{post.message}</p>
+                            <Link to={`/post/${post._id}`}>
+                                <h1>{post.title}</h1>
+                                <p>{post.message}</p>
+                            </Link>
                             <Link to={`/user/${post.user._id}`}>{post.user.username}</Link>
                             <p>{pretty_date}</p>
                         </div>
