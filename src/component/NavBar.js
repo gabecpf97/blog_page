@@ -1,22 +1,33 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const NavBar = () => {
+const NavBar = ({status}) => {
     return (
         <div className="nav_bar">
             <Link to="/">
                 <h1 className="logo">Welcome to my blog</h1>
             </Link>
             <ul className="pages">
-                <Link to="/sign_up">
-                    <li className="page">Sign up</li>
-                </Link>
-                <Link to="/log_in">
-                    <li className="page">Log in</li>
-                </Link>
-                <Link to="/Account">
-                    <li className="account">Account</li>
-                </Link>
+                {status && 
+                    <div className="loged_in">
+                        <Link to="/Account">
+                            <li className="page">Account</li>
+                        </Link>
+                        <Link to="/log_out">
+                            <li className="page">Log Out</li>
+                        </Link>
+                    </div>
+                }
+                {!status &&
+                    <div className="visiter">
+                        <Link to="/sign_up">
+                            <li className="page">Sign up</li>
+                        </Link>
+                        <Link to="/log_in">
+                            <li className="page">Log in</li>
+                        </Link>
+                    </div>
+                }
             </ul>
         </div>
     )

@@ -3,7 +3,7 @@ import uniqid from 'uniqid';
 import { useNavigate } from "react-router-dom";
 
 
-const SignUp = () => {
+const SignUp = ({ changeStatus }) => {
     const navigate = useNavigate();
     const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
@@ -51,6 +51,7 @@ const SignUp = () => {
                 const token = res_data.token;
                 localStorage.setItem('token', token);
                 setLoadedErr(false);
+                changeStatus();
                 navigate('/');
             }
         }
@@ -64,23 +65,23 @@ const SignUp = () => {
             <form onSubmit={(e) => onSubmitForm(e)}>
                 <div className="getUsername">
                     <label htmlFor="username">Username: </label>
-                    <input type="text" placeholder="username" value={username}
-                        onChange={(e) => onUsernameChange(e)} />
+                    <input type="text" placeholder="username" 
+                        required={true} onChange={(e) => onUsernameChange(e)} />
                 </div>
                 <div className="getEmail">
                     <label htmlFor="email">Email: </label>
-                    <input type="text" placeholder="email" value={email}
-                        onChange={(e) => onEmailChange(e)} />
+                    <input type="text" placeholder="email" 
+                        required={true} onChange={(e) => onEmailChange(e)} />
                 </div>
                 <div className="getPassword">
                     <label htmlFor="password">Password: </label>
-                    <input type="text" placeholder="password" value={password}
-                        onChange={(e) => onPasswordChange(e)} />
+                    <input type="text" placeholder="password" 
+                        required={true} onChange={(e) => onPasswordChange(e)} />
                 </div>
                 <div className="getConfirmPassword">
                     <label htmlFor="confirm_password">Confirm password: </label>
-                    <input type="text" placeholder="confirm password" value={confirm_password}
-                        onChange={(e) => onConfirmChange(e)} />
+                    <input type="text" placeholder="confirm password" 
+                        required={true} onChange={(e) => onConfirmChange(e)} />
                 </div>
                 <input type="submit" value="Sign Up" />
             </form>
