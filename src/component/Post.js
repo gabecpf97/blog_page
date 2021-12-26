@@ -1,30 +1,39 @@
 import { DateTime } from "luxon";
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
+import CommentPost from "./CommentPost";
+import Comment from "./Comment";
 
 const Post = () => {
     const id = useParams().id;
     const [post_info, setPost_info] = useState();
     const [comments, setComments] = useState();
     const [loaded, setLoaded] = useState(false);
+    const [added, setAdded] = useState(false);
 
     useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const data = await Promise.all([
-                    fetch(`http://localhost:5000/post/${id}`).then(response => response.json()),
-                    fetch(`http://localhost:5000/post_comment/${id}`).then(response => response.json()),
-                ]);
-                setPost_info(data[0].thePost);
-                setComments(data[1].comment_list);
-                setLoaded(true);
-                
-            } catch (err) {
-                console.log(err);
+        if (post_info === null || added) {
+            const fetchData = async () => {
+                try {
+                    const data = await Promise.all([
+                        fetch(`http://localhost:5000/post/${id}`).then(response => response.json()),
+                        fetch(`http://localhost:5000/post_comment/${id}`).then(response => response.json()),
+                    ]);
+                    setPost_info(data[0].thePost);
+                    setComments(data[1].comment_list);
+                    setLoaded(true);
+                    setAdded(false);
+                } catch (err) {
+                    console.log(err);
+                }
             }
+            fetchData();
         }
-        fetchData();
-    }, [id]);
+    }, [id, added, post_info]);
+
+    const addComment = () => {
+        setAdded(true);
+    }
 
     return (
         <div className="post_detail">
@@ -41,17 +50,8 @@ const Post = () => {
                         </p>
                         <p>{post_info.message}</p>
                     </div>
-                    <div className="comments">
-                        {comments.map(comment => {
-                            return (
-                                <div className="comment" key={comment._id}>
-                                    <h2>{comment.message}</h2>
-                                    <p>{comment.user.username}</p>
-                                    <p>{comment.date}</p>
-                                </div>
-                            )
-                        })}
-                    </div>
+                    <CommentPost handleSumbit={addComment}/>
+                    <Comment comments={comments} />
                 </div>
             }
         </div>

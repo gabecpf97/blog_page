@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import uniqid from 'uniqid';
 import { useNavigate } from "react-router-dom";
+import FormField from "./FormField";
 
 
 const SignUp = ({ changeStatus }) => {
@@ -63,7 +64,11 @@ const SignUp = ({ changeStatus }) => {
     return (
         <div className="sign_up">
             <form onSubmit={(e) => onSubmitForm(e)}>
-                <div className="getUsername">
+                <FormField fieldname={username} changeFn={onUsernameChange} />
+                <FormField fieldname={email} changeFn={onEmailChange} />
+                <FormField fieldname={password} changeFn={onPasswordChange} />
+                <FormField fieldname={confirm_password} changeFn={onConfirmChange} />
+                {/* <div className="getUsername">
                     <label htmlFor="username">Username: </label>
                     <input type="text" placeholder="username" 
                         required={true} onChange={(e) => onUsernameChange(e)} />
@@ -83,7 +88,7 @@ const SignUp = ({ changeStatus }) => {
                     <input type="text" placeholder="confirm password" 
                         required={true} onChange={(e) => onConfirmChange(e)} />
                 </div>
-                <input type="submit" value="Sign Up" />
+                <input type="submit" value="Sign Up" /> */}
             </form>
             <ul className="errors">
                 {loadedErr && errors.map(error => {
