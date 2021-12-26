@@ -50,7 +50,9 @@ const SignUp = ({ changeStatus }) => {
                 setLoadedErr(true);
             } else {
                 const token = res_data.token;
+                const user = res_data.user;
                 localStorage.setItem('token', token);
+                localStorage.setItem('user', JSON.stringify(user));
                 setLoadedErr(false);
                 changeStatus();
                 navigate('/');

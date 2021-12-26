@@ -12,7 +12,7 @@ const Post = () => {
     const [added, setAdded] = useState(false);
 
     useEffect(() => {
-        if (post_info === null || added) {
+        if (post_info === undefined || added) {
             const fetchData = async () => {
                 try {
                     const data = await Promise.all([
@@ -50,7 +50,7 @@ const Post = () => {
                         </p>
                         <p>{post_info.message}</p>
                     </div>
-                    <CommentPost handleSumbit={addComment}/>
+                    <CommentPost handleSumbit={addComment} postID={id}/>
                     <Comment comments={comments} />
                 </div>
             }

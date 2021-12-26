@@ -3,10 +3,8 @@ import { Link } from "react-router-dom";
 import { DateTime } from "luxon";
 
 const Home  = () => {
-    const token = localStorage.token;
     const [posts, setPosts] = useState();
     const [loaded, setLoaded] = useState(false);
-    const [logedIn, setLogedIn] = useState(false);
 
     useEffect(() => {
         const fetchPosts = async () => {
@@ -20,13 +18,6 @@ const Home  = () => {
             console.log('fail fetching');
         });
     }, []);
-
-    useEffect(() => {
-        if (token)
-            setLogedIn(true);
-        else   
-            setLogedIn(false);
-    }, [token]);
 
     return(
         <div className="home">

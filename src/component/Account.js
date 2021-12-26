@@ -1,35 +1,37 @@
-import react, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import React, { useEffect, useState } from "react";
 import Comment from "./Comment";
 
 const Account = () => {
-    const [id] = useParams();
-    const [user, setUser] = useState();
+    const user = JSON.parse(localStorage.user);
     const [comments, setComments] = useState();
     const [loaded, setLoaded] = useState(false);
 
     useEffect(() => {
         const fetchData = async () => {
             try {   
-                const data = await Promise.all([
-                    fetch('user_url').then(response => response.json()),
-                    fetch('comment_url').then(response => response.json()),
-                ]);
-                setUser(data[0]);
-                setComments(data[1]);
-                setLoaded(true);
+                const response = await fetch(`http://localhost:5000/user_comment/${user._id}`, {
+                    headers: {"Authorization": `Bearer ${localStorage.token}`}
+                });
+                const data = await response.json();
+                if (data.comment_list) {
+                    setComments(data.comment_list);
+                    setLoaded(true);
+                } else {
+                    console.log('server error');
+                }
             } catch (err) {
                 console.log(err);
             }
         };
         fetchData();
-    }, [id]);
+    }, [user]);
 
     return (
         <div className="account">
             {loaded && 
                 <div className="info">
-                    <h1>username</h1>
+                    <h1>{user.username}</h1>
+                    <h2>Comment you created</h2>
                     <Comment comments={comments} />
                 </div>                    
             }

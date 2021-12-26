@@ -1,6 +1,12 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 const Comment = ({ comments }) => {
+    const [allow, setAllow] = useState(false);
+
+    useEffect(() => {
+        if (localStorage.token)
+            setAllow(true);
+    }, []);
 
     return (
         <div className="comments">
