@@ -1,7 +1,6 @@
 import { DateTime } from "luxon";
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import async from "async";
 
 const Post = () => {
     const id = useParams().id;
