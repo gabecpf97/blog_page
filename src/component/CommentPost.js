@@ -1,15 +1,23 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 const CommentPost = ({ handleSumbit, postID }) => {
     const [message, setMessage] = useState();
+    const [addComment, setAddComment] = useState(false);
 
     const onMessageChange = (e) => {
         setMessage(e.target.value);
     }
 
+    const onClickAdd = () => {
+        setAddComment(true);
+    }
+
+    const toCancel = () => {
+        setAddComment(false);
+    }
+
     const onAddMessage = (e) => {
         e.preventDefault();
-        console.log(postID);
         // fetch to POST comment
         const fetchData = async () => {
             try{
@@ -28,27 +36,30 @@ const CommentPost = ({ handleSumbit, postID }) => {
                 if (data.errors) {
                     console.log(data.errors.msg);
                 } else {
-                    console.log(data);
-                    setMessage('');
+                    // setMessage('');
+                    setAddComment(false);
                     handleSumbit();
                 }
             } catch(err) {
                 console.log(err);
             }
         }
-
         fetchData();
     }
 
     return (
         <div className="comment_post">
-            <form onSubmit={(e) => onAddMessage(e)}>
-                <div className="getMessage">
-                    <input type="text" name="message" placeholder="comment" 
-                        required={true} onChange={(e) => onMessageChange(e)} />
-                </div>
-                <input type="submit" value="Submit" />
-            </form>
+            {!addComment && <button onClick={() => onClickAdd()}>Add Comment</button>}
+            {addComment &&
+                <form onSubmit={(e) => onAddMessage(e)}>
+                    <div className="getMessage">
+                        <input type="text" name="message" placeholder="comment" 
+                            required={true} onChange={(e) => onMessageChange(e)} />
+                    </div>
+                    <input type="submit" value="Submit" />
+                    <button onClick={() => toCancel()}>Cancel</button>
+                </form>
+            }
         </div>
     )
 }

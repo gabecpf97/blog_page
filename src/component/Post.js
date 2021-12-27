@@ -51,7 +51,7 @@ const Post = () => {
                         <p>{post_info.message}</p>
                     </div>
                     <CommentPost handleSumbit={addComment} postID={id}/>
-                    <Comment comments={comments} />
+                    <Comment comments={comments} reload={addComment} />
                 </div>
             }
         </div>
