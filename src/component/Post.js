@@ -5,6 +5,7 @@ import CommentPost from "./CommentPost";
 import Comment from "./Comment";
 import '../style/post.css';
 import '../style/comment.css';
+import PostModify from "./PostModify";
 
 const Post = () => {
     const id = useParams().id;
@@ -53,6 +54,9 @@ const Post = () => {
                             </p>
                         </div>
                         <p className="post_msg">{post_info.message}</p>
+                        {(JSON.parse(localStorage.user).id === post_info.user._id) &&
+                            <PostModify Pid={post_info._id} refresh={addComment}/>
+                        }
                     </div>
                     <CommentPost handleSumbit={addComment} postID={id}/>
                     <h2>Comment: </h2>
