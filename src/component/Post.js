@@ -19,8 +19,8 @@ const Post = () => {
             const fetchData = async () => {
                 try {
                     const data = await Promise.all([
-                        fetch(`http://my-blog-api-29.herokuapp.com/post/${id}`).then(response => response.json()),
-                        fetch(`http://my-blog-api-29.herokuapp.com/post_comment/${id}`).then(response => response.json()),
+                        fetch(`https://my-blog-api-29.herokuapp.com/post/${id}`).then(response => response.json()),
+                        fetch(`https://my-blog-api-29.herokuapp.com/post_comment/${id}`).then(response => response.json()),
                     ]);
                     setPost_info(data[0].thePost);
                     setComments(data[1].comment_list);
