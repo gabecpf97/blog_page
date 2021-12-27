@@ -14,7 +14,7 @@ const User = ({ myId }) => {
         if (posts === undefined || reload) {
             const fetchData = async () => {
                 try {
-                    const response = await fetch(`http://localhost:5000/user/${id}/post_comment`);
+                    const response = await fetch(`https://my-blog-api-29.herokuapp.com/user/${id}/post_comment`);
                     const data = await response.json();
                     setPosts(data.post_list);
                     setComments(data.comment_list);

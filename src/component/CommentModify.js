@@ -21,7 +21,7 @@ const CommentModify = ({ Pid, Cid, refresh }) => {
         const fetchData = async () => {
             try {
                 const response = await fetch(
-                    `http://localhost:5000/post/${Pid}/comment/${Cid}/update`, {
+                    `https://my-blog-api-29.herokuapp.com/post/${Pid}/comment/${Cid}/update`, {
                         method: 'post',
                         body: JSON.stringify({message}),
                         headers: {
@@ -47,7 +47,7 @@ const CommentModify = ({ Pid, Cid, refresh }) => {
         const fetchData = async () => {
             try {
                 const response = await fetch(
-                    `http://localhost:5000/post/${Pid}/comment/${Cid}/delete`, {
+                    `https://my-blog-api-29.herokuapp.com/post/${Pid}/comment/${Cid}/delete`, {
                         method: 'post',
                         headers: {
                             'Authorization': `Bearer ${localStorage.getItem('token')}`,

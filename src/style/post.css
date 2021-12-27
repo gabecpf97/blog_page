@@ -27,3 +27,16 @@
     margin: 0px;
     margin-top: 10px;
 }
+
+.post_control {
+    padding: 0px 2.5vw;
+}
+
+.post_control textarea {
+    width: 70vw;
+    height: 20vh;
+    max-width: 900px;
+    min-height: 200px;
+    max-height: 400px;
+    display: block;
+}

@@ -21,7 +21,7 @@ const CommentPost = ({ handleSumbit, postID }) => {
         // fetch to POST comment
         const fetchData = async () => {
             try{
-                const response = await fetch(`http://localhost:5000/post/${postID}/comment/create`, {
+                const response = await fetch(`https://my-blog-api-29.herokuapp.com/post/${postID}/comment/create`, {
                     method: 'post',
                     body: JSON.stringify({
                         post: postID,

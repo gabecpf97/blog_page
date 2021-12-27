@@ -1,6 +1,9 @@
 # This is the font end source code for the blog project 
 This is build using react and getting data from an node backend with api calls
 
+## Repo and live site
+This is server repo: https://github.com/gabecpf97/blog_api (host on heroku)
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

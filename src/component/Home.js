@@ -8,7 +8,7 @@ const Home  = () => {
 
     useEffect(() => {
         const fetchPosts = async () => {
-            const response = await fetch('http://localhost:5000/', {mode: 'cors'});
+            const response = await fetch('https://my-blog-api-29.herokuapp.com/', {mode: 'cors'});
             const all_post = await response.json();
             setPosts(all_post.post_list);
             setLoaded(true);

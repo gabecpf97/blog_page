@@ -32,7 +32,7 @@ const SignUp = ({ changeStatus }) => {
     const onSubmitForm = async (e) => {
         e.preventDefault();
         const sign_up_post = async () => {
-            const response = await fetch('http://localhost:5000/sign_up', {
+            const response = await fetch('https://my-blog-api-29.herokuapp.com/sign_up', {
                 method: 'post',
                 body: JSON.stringify({
                     username,

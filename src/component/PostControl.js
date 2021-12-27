@@ -13,7 +13,7 @@ const PostControl = () => {
             setTitle('Edit Post');
             const fetchPost = async () => {
                 try {
-                    const response = await fetch(`http://localhost:5000/post/${id}`);
+                    const response = await fetch(`https://my-blog-api-29.herokuapp.com/post/${id}`);
                     const data = await response.json();
                     if (data.errors) {
                         console.log(data.errors.msg);
@@ -44,7 +44,7 @@ const PostControl = () => {
         e.preventDefault();
         const createPost = async () => {
             try {
-                const response = await fetch('http://localhost:5000/post/create', {
+                const response = await fetch('https://my-blog-api-29.herokuapp.com/post/create', {
                     method:'post',
                     body: JSON.stringify({title: postTitle, message}),
                     headers: {
@@ -65,7 +65,7 @@ const PostControl = () => {
 
         const editPost = async () => {
             try {
-                const response = await fetch(`http://localhost:5000/post/${id}/update`, {
+                const response = await fetch(`https://my-blog-api-29.herokuapp.com/post/${id}/update`, {
                     method:'post',
                     body: JSON.stringify({title: postTitle, message}),
                     headers: {
@@ -95,8 +95,11 @@ const PostControl = () => {
         <div className="post_control">
             <h1>{title}</h1>
             <form onSubmit={(e) => handleSubmit(e)}>
-                <input type="text" required={true} 
-                    value={postTitle} onChange={(e) => handleTitle(e)}/>
+                <div className="getTitle field">
+                    <label>Title: </label>
+                    <input type="text" required={true} 
+                        value={postTitle} onChange={(e) => handleTitle(e)}/>
+                </div>
                 <textarea name="message" className="post_msg_area"
                     onChange={(e) => handleChange(e)} required={true}
                     value={message} />

@@ -6,7 +6,7 @@ const PostModify = ({ Pid, refresh }) => {
     const handleDelete = () => {
         const deletePost = async () => {
             try {
-                const response = await fetch(`http://localhost:5000/post/${Pid}/delete`, {
+                const response = await fetch(`https://my-blog-api-29.herokuapp.com/post/${Pid}/delete`, {
                     method:'post',
                     headers: {
                         'Content-Type': 'application/json',

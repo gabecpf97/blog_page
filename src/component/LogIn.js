@@ -20,13 +20,16 @@ const LogIn = ({ changeStatus }) => {
     const handleSubmit = (e) => {
         e.preventDefault();
         const log_in_post = async () => {
-            const response = await fetch('http://localhost:5000/log_in', {
+            const response = await fetch('https://my-blog-api-29.herokuapp.com/log_in', {
+                mode: 'cors',
                 method: "POST",
                 body: JSON.stringify({
                     email,
                     password
                 }),
-                headers: {'Content-Type': 'application/json'}
+                headers: {
+                    'Content-Type': 'application/json'
+                }
             });
             const res_data = await response.json();
             if (res_data.message) {
