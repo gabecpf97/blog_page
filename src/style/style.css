@@ -35,6 +35,10 @@ button:hover,
     padding: 0px 2.5vw;
 }
 
+.welcome_user {
+    text-align: center;
+}
+
 .to_user {
     padding: 0px 10px;
 }

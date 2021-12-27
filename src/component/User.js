@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import Comment from "./Comment";
 import PostList from "./PostList";
 
-const User = () => {
-    const id = useParams().id;
+const User = ({ myId }) => {
+    const id = useParams().id || myId;
     const [posts, setPosts] = useState();
     const [comments, setComments] = useState();
     const [loaded, setLoaded] = useState(false);
@@ -37,7 +37,10 @@ const User = () => {
             {loaded && 
                 <div className="user_detail">
                     <h1>Post</h1>
-                    <PostList posts={posts} />
+                    <PostList posts={posts} reload={onReload} />
+                    {myId && 
+                        <Link className="page" to="/post/create">create post</Link>
+                    }
                     <h1>Comment</h1>
                     <Comment comments={comments} reload={onReload} />
                 </div>

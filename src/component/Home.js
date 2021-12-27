@@ -1,6 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import { DateTime } from "luxon";
 import '../style/home.css';
 import PostList from "./PostList";
 
@@ -23,7 +21,7 @@ const Home  = () => {
 
     return(
         <div className="home">
-            {loaded && <PostList posts={posts} />}
+            {loaded && <PostList posts={posts} from="home" />}
         </div>
     )
 }
