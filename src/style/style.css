@@ -85,3 +85,12 @@ button:hover,
     padding-inline-start: 0px;
     color: #84e128;
 }
+
+/* post modify button */
+.post_modify {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin: 10px;
+}

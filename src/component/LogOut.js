@@ -6,6 +6,7 @@ const LogOut = ({ changeStatus }) => {
 
     const handleLogOut = () => {
         localStorage.removeItem('token');
+        localStorage.removeItem('user');
         changeStatus();
         nav('/');
     }

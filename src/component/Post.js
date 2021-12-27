@@ -54,11 +54,14 @@ const Post = () => {
                             </p>
                         </div>
                         <p className="post_msg">{post_info.message}</p>
-                        {(JSON.parse(localStorage.user).id === post_info.user._id) &&
+                        {localStorage.user &&
+                            (JSON.parse(localStorage.user)._id === post_info.user._id) &&
                             <PostModify Pid={post_info._id} refresh={addComment}/>
                         }
                     </div>
-                    <CommentPost handleSumbit={addComment} postID={id}/>
+                    {localStorage.user && 
+                        <CommentPost handleSumbit={addComment} postID={id}/>
+                    }
                     <h2>Comment: </h2>
                     <Comment comments={comments} reload={addComment} />
                 </div>

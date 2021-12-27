@@ -17,7 +17,8 @@ const PostList = ({ posts, from, reload }) => {
                             <p>By: {post.user.username}</p>
                             <p>{pretty_date}</p>
                         </Link>
-                        {(JSON.parse(localStorage.user)._id === post.user._id) &&
+                        {localStorage.user &&
+                            (JSON.parse(localStorage.user)._id === post.user._id) &&
                             !from &&
                             <PostModify Pid={post._id} refresh={reload} />
                         }
