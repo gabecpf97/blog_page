@@ -38,8 +38,8 @@ const Account = () => {
         <div className="account">
             {loaded && 
                 <div className="info">
-                    <h1>{user.username}</h1>
-                    <h2>Comment you created</h2>
+                    <h1>Welcome {user.username}</h1>
+                    <h2>Comment you created: </h2>
                     <Comment comments={comments} reload={onReload} />
                 </div>                    
             }

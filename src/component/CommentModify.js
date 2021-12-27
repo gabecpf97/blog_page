@@ -12,6 +12,10 @@ const CommentModify = ({ Pid, Cid, refresh }) => {
         setMessage(e.target.value);
     }
 
+    const onCancel = () => {
+        setEdit(false);
+    }
+
     const handleSumbit = (e) => {
         e.preventDefault();
         const fetchData = async () => {
@@ -66,10 +70,11 @@ const CommentModify = ({ Pid, Cid, refresh }) => {
         <div className="comment_modify">
             {!edit && <button onClick={() => handleEdit()}>Edit Comment</button>}
             {edit &&
-                <form onSubmit={(e) => handleSumbit(e)}>
-                    <input type="text" required={true} 
+                <form className="edit_form" onSubmit={(e) => handleSumbit(e)}>
+                    <input className="edit_text" type="text" required={true} 
                         onChange={(e) => onMessageChange(e)} />
-                    <input type="submit" value="Submit" />
+                    <input className="submit" type="submit" value="Submit" />
+                    <button onClick={() => onCancel()}>Cancel</button>
                 </form>
             }
             <button onClick={() => handleDelete()}>Delete Comment</button>

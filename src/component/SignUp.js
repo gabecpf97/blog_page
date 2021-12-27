@@ -65,32 +65,13 @@ const SignUp = ({ changeStatus }) => {
 
     return (
         <div className="sign_up">
+            <h1>Sign Up</h1>
             <form onSubmit={(e) => onSubmitForm(e)}>
-                <FormField fieldname={username} changeFn={onUsernameChange} />
-                <FormField fieldname={email} changeFn={onEmailChange} />
-                <FormField fieldname={password} changeFn={onPasswordChange} />
-                <FormField fieldname={confirm_password} changeFn={onConfirmChange} />
-                {/* <div className="getUsername">
-                    <label htmlFor="username">Username: </label>
-                    <input type="text" placeholder="username" 
-                        required={true} onChange={(e) => onUsernameChange(e)} />
-                </div>
-                <div className="getEmail">
-                    <label htmlFor="email">Email: </label>
-                    <input type="text" placeholder="email" 
-                        required={true} onChange={(e) => onEmailChange(e)} />
-                </div>
-                <div className="getPassword">
-                    <label htmlFor="password">Password: </label>
-                    <input type="text" placeholder="password" 
-                        required={true} onChange={(e) => onPasswordChange(e)} />
-                </div>
-                <div className="getConfirmPassword">
-                    <label htmlFor="confirm_password">Confirm password: </label>
-                    <input type="text" placeholder="confirm password" 
-                        required={true} onChange={(e) => onConfirmChange(e)} />
-                </div>
-                <input type="submit" value="Sign Up" /> */}
+                <FormField fieldname="username" changeFn={onUsernameChange} />
+                <FormField fieldname="email" changeFn={onEmailChange} />
+                <FormField fieldname="password" changeFn={onPasswordChange} />
+                <FormField fieldname="confirm_password" changeFn={onConfirmChange} />
+                <input className="submit" type="submit" value="Sign up" />
             </form>
             <ul className="errors">
                 {loadedErr && errors.map(error => {

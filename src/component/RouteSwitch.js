@@ -7,6 +7,8 @@ import Post from './Post';
 import SignUp from './SignUp';
 import LogIn from './LogIn';
 import LogOut from './LogOut';
+import User from './User';
+import '../style/style.css';
 
 const RouteSwitch = () => {
     const [status, setStatus] = useState(false);
@@ -31,6 +33,7 @@ const RouteSwitch = () => {
                     <Route path='/log_out' element={<LogOut changeStatus={changeStatus} />} />
                     <Route path="/post/:id" element={<Post />} />
                     <Route path="/sign_up" element={<SignUp changeStatus={changeStatus} />} />
+                    <Route path="/user/:id" element={<User />} />
                 </Routes>
             </BrowserRouter>
         </div>

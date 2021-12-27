@@ -1,0 +1,29 @@
+.post_page {
+    padding: 0px 2.5vw;
+    margin-top: 2vh;
+}
+
+.post_detail {
+    background-color: #123162;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.post_detail h1 {
+    text-align: center;
+}
+
+.user_info {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.post_msg {
+    background-color: #11213a;
+    padding: 25px 15px;
+    border-radius: 10px;
+    margin: 0px;
+    margin-top: 10px;
+}

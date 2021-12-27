@@ -1,0 +1,21 @@
+.post_list {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.post {
+    background-color: #0a2856;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.post:hover {
+    background-color: #7285a5;
+}
+
+.post h1 {
+    margin-top: 0px;
+}

@@ -12,7 +12,7 @@ const LogOut = ({ changeStatus }) => {
 
     return (
         <div className="log_out">
-            <p>Log Out?</p>
+            <h1>Log Out?</h1>
             <button onClick={() => handleLogOut()}>Log Out</button>
         </div>
     )

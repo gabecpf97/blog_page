@@ -3,6 +3,8 @@ import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import CommentPost from "./CommentPost";
 import Comment from "./Comment";
+import '../style/post.css';
+import '../style/comment.css';
 
 const Post = () => {
     const id = useParams().id;
@@ -36,21 +38,24 @@ const Post = () => {
     }
 
     return (
-        <div className="post_detail">
+        <div className="post_page">
             {loaded &&
                 <div className="post_div">
-                    <div className="post">
+                    <div className="post_detail">
                         <h1>{post_info.title}</h1>
-                        <Link to={`/user/${post_info.user._id}`}>
-                            <h2>{post_info.user.username}</h2>
-                        </Link>
-                        <p>
-                            {DateTime.fromJSDate(new Date(`${post_info.date}`))
-                            .toLocaleString(DateTime.DATETIME_FULL)}
-                        </p>
-                        <p>{post_info.message}</p>
+                        <div className="user_info">
+                            <Link className="to_user" to={`/user/${post_info.user._id}`}>
+                                <p>By: {post_info.user.username}</p>
+                            </Link>
+                            <p>
+                                {DateTime.fromJSDate(new Date(`${post_info.date}`))
+                                .toLocaleString(DateTime.DATETIME_FULL)}
+                            </p>
+                        </div>
+                        <p className="post_msg">{post_info.message}</p>
                     </div>
                     <CommentPost handleSumbit={addComment} postID={id}/>
+                    <h2>Comment: </h2>
                     <Comment comments={comments} reload={addComment} />
                 </div>
             }

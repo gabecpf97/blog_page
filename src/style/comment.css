@@ -1,0 +1,52 @@
+.comment_post {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.comment_form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.getMessage input,
+.edit_text {
+    padding: 10px;
+    width: 50vw;
+    max-width: 600px;
+}
+
+.comment {
+    background-color: #244d8d;
+    border-radius: 10px;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.comment p {
+    font-size: 14px;
+}
+
+.comment_modify button {
+    margin-right: 10px;
+}
+
+.edit_form {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.comment .to_user p {
+    display: inline;
+}
+
+.comment .to_user {
+    padding: 10px;
+    margin-bottom: 10px;
+}

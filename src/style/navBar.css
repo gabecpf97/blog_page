@@ -1,0 +1,22 @@
+.nav_bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #2c4874;
+}
+
+.logo {
+    margin: 0px;
+}
+
+.pages {
+    padding-inline-start: 0px;
+}
+
+.pages div {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    gap: 10px;
+}

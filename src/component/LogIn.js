@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import FormField from "./FormField";
 
 const LogIn = ({ changeStatus }) => {
     const nav = useNavigate();
@@ -50,20 +51,16 @@ const LogIn = ({ changeStatus }) => {
         <div className="log_in">
             <h1>Log In</h1>
             <form onSubmit={(e) => handleSubmit(e)}>
-                <div className="getEmail">
-                    <label htmlFor="email">Email: </label>
-                    <input type="text" name="email" required={true}
-                        onChange={(e) => onEmailChange(e)}/>
-                </div>
-                <div className="getPassword">
+                <FormField fieldname="email" changeFn={onEmailChange} />
+                <div className="field">
                     <label htmlFor="password">Password: </label>
                     <input type="password" name="password" required={true}
                         onChange={(e) => onPasswordChange(e)}/>
                 </div>
-                <input type="submit" value="Log In" />
+                <input className="submit" type="submit" value="Log In" />
             </form>
             {hasError && 
-                <div className="error">
+                <div className="errors">
                     <p>{errors}</p>
                 </div>
             }

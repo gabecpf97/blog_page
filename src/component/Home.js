@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { DateTime } from "luxon";
+import '../style/home.css';
 
 const Home  = () => {
     const [posts, setPosts] = useState();
@@ -30,9 +31,9 @@ const Home  = () => {
                             <Link to={`/post/${post._id}`}>
                                 <h1>{post.title}</h1>
                                 <p>{post.message}</p>
+                                <p>By: {post.user.username}</p>
+                                <p>{pretty_date}</p>
                             </Link>
-                            <Link to={`/user/${post.user._id}`}>{post.user.username}</Link>
-                            <p>{pretty_date}</p>
                         </div>
                     )
                 })}

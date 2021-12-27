@@ -1,0 +1,82 @@
+body {
+    margin: 0px;
+    background-color: #34568B;
+    color: aliceblue;
+}
+
+a {
+    text-decoration: none;
+    color: aliceblue;
+}
+
+ul {
+    list-style: none;
+}
+
+button,
+.page,
+.submit {
+    border-radius: 10px;
+    background-color: #25344d;
+    padding: 10px;
+    color: aliceblue;
+    cursor: pointer;
+    border: none;
+}
+
+button:hover,
+.page:hover,
+.submit:hover {
+    background-color: #7285a5;
+}
+
+.info {
+    padding: 0px 2.5vw;
+}
+
+.to_user {
+    padding: 0px 10px;
+}
+
+.to_user:hover {
+    background-color: #7285a5;
+    border-radius: 10px;
+}
+
+/* sign up and login in / out form */
+.log_out {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.sign_up,
+.log_in {
+    margin-top: 25vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.field {
+    display: grid;
+    grid-template-columns: 150px 1fr;
+}
+
+.sign_up form,
+.log_in form,
+.errors {
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.errors {
+    padding-inline-start: 0px;
+    color: #84e128;
+}

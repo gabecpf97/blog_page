@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 
 const CommentPost = ({ handleSumbit, postID }) => {
     const [message, setMessage] = useState();
@@ -49,14 +49,16 @@ const CommentPost = ({ handleSumbit, postID }) => {
 
     return (
         <div className="comment_post">
-            {!addComment && <button onClick={() => onClickAdd()}>Add Comment</button>}
+            {!addComment && 
+                <button className="add_comment" onClick={() => onClickAdd()}>Add Comment</button>
+            }
             {addComment &&
-                <form onSubmit={(e) => onAddMessage(e)}>
+                <form className="comment_form" onSubmit={(e) => onAddMessage(e)}>
                     <div className="getMessage">
                         <input type="text" name="message" placeholder="comment" 
                             required={true} onChange={(e) => onMessageChange(e)} />
                     </div>
-                    <input type="submit" value="Submit" />
+                    <input className="submit" type="submit" value="Submit" />
                     <button onClick={() => toCancel()}>Cancel</button>
                 </form>
             }
