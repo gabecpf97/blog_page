@@ -45,7 +45,7 @@ const Post = () => {
                     <div className="post_detail">
                         <h1>{post_info.title}</h1>
                         <div className="user_info">
-                            <Link className="to_user" to={`/user/${post_info.user._id}`}>
+                            <Link className="to_user" to={`/blog_page/user/${post_info.user._id}`}>
                                 <p>By: {post_info.user.username}</p>
                             </Link>
                             <p>
