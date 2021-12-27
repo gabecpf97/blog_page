@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { DateTime } from "luxon";
 import '../style/home.css';
+import PostList from "./PostList";
 
 const Home  = () => {
     const [posts, setPosts] = useState();
@@ -22,22 +23,7 @@ const Home  = () => {
 
     return(
         <div className="home">
-            <ul className="post_list">
-                {loaded && posts.map(post => {
-                    const pretty_date = DateTime.fromJSDate(new Date(`${post.date}`))
-                                        .toLocaleString(DateTime.DATETIME_FULL);
-                    return(
-                        <div className="post" key={post._id}>
-                            <Link to={`/post/${post._id}`}>
-                                <h1>{post.title}</h1>
-                                <p>{post.message}</p>
-                                <p>By: {post.user.username}</p>
-                                <p>{pretty_date}</p>
-                            </Link>
-                        </div>
-                    )
-                })}
-            </ul>
+            {loaded && <PostList posts={posts} />}
         </div>
     )
 }

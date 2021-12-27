@@ -30,7 +30,8 @@ button:hover,
     background-color: #7285a5;
 }
 
-.info {
+.info,
+.user_detail {
     padding: 0px 2.5vw;
 }
 
