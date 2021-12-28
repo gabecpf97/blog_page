@@ -12,7 +12,7 @@ const PostList = ({ posts, from, reload }) => {
                                     .toLocaleString(DateTime.DATETIME_FULL);
                 return(
                     <div className="post" key={post._id}>
-                        <Link to={`/post/${post._id}`}>
+                        <Link to={`/blog_page/post/${post._id}`}>
                             <h1>{post.title}</h1>
                             <p>By: {post.user.username}</p>
                             <p>{pretty_date}</p>

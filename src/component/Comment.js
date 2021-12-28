@@ -17,7 +17,7 @@ const Comment = ({ comments, reload }) => {
                 return (
                     <div className="comment" key={comment._id}>
                         <h2>{comment.message}</h2>
-                        <Link className="to_user" to={`/user/${comment.user._id}`}>
+                        <Link className="to_user" to={`/blog_page/user/${comment.user._id}`}>
                             <p>By: {comment.user.username}</p>
                         </Link>
                         <p>{DateTime.fromJSDate(new Date(`${comment.date}`))
