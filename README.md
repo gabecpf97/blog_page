@@ -3,6 +3,7 @@ This is build using react and getting data from an node backend with api calls
 
 ## Repo and live site
 This is server repo: https://github.com/gabecpf97/blog_api (host on heroku)
+live website: https://gabecpf97.github.io/blog_page (github webpage)
 
 # Getting Started with Create React App
 
