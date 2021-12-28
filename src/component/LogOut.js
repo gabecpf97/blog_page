@@ -8,7 +8,7 @@ const LogOut = ({ changeStatus }) => {
         localStorage.removeItem('token');
         localStorage.removeItem('user');
         changeStatus();
-        nav('/');
+        nav('/blog_page/');
     }
 
     return (

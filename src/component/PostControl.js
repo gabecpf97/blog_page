@@ -56,7 +56,7 @@ const PostControl = () => {
                 if (data.errors) {
                     console.log(data.errors.msg);
                 } else {
-                    nav(`/post/${data.post._id}`);
+                    nav(`/blog_page/post/${data.post._id}`);
                 }
             } catch (err) {
                 console.log(err);
@@ -77,7 +77,7 @@ const PostControl = () => {
                 if (data.errors) {
                     console.log(data.errors.msg);
                 } else {
-                    nav(`/post/${data.post._id}`);
+                    nav(`/blog_page/post/${data.post._id}`);
                 }
             } catch (err) {
                 console.log(err);

@@ -55,7 +55,7 @@ const SignUp = ({ changeStatus }) => {
                 localStorage.setItem('user', JSON.stringify(user));
                 setLoadedErr(false);
                 changeStatus();
-                navigate('/');
+                navigate('/blog_page/');
             }
         }
         sign_up_post().catch((err) => {

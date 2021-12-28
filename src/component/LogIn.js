@@ -41,7 +41,7 @@ const LogIn = ({ changeStatus }) => {
                 localStorage.setItem('token', token);
                 localStorage.setItem('user', JSON.stringify(user));
                 changeStatus();
-                nav('/');
+                nav('/blog_page');
             }
         }
 
