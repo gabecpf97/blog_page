@@ -39,7 +39,7 @@ const User = ({ myId }) => {
                     <h1>Post</h1>
                     <PostList posts={posts} reload={onReload} />
                     {myId && 
-                        <Link className="page" to="/post/create">create post</Link>
+                        <Link className="page" to="/blog_page/post/create">create post</Link>
                     }
                     <h1>Comment</h1>
                     <Comment comments={comments} reload={onReload} />

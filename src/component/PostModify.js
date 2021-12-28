@@ -29,7 +29,7 @@ const PostModify = ({ Pid, refresh }) => {
 
     return(
         <div className="post_modify">
-            <Link className="page" to={`/post/${Pid}/edit`}>Update Post</Link>
+            <Link className="page" to={`/blog_page/post/${Pid}/edit`}>Update Post</Link>
             <button onClick={() => handleDelete()}>Delete Post</button>
         </div>
     )
